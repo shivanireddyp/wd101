@@ -9,12 +9,8 @@ const retriveEntries = () => {
     return entries;
 }
 let userEntries = retriveEntries();
-
 const displayEntries = () => {
     const entries = retriveEntries();
-
-
-
     const tableEntries = entries.map((entry) => {
         const name = `<td class= border px-4 py-2'>${entry.name}</td>`;
         const emailCell = `<td class='border px-4 py-2'>${entry.email}</td>`;
@@ -24,7 +20,6 @@ const displayEntries = () => {
         const row = `<tr>${name} ${emailCell} ${passwordCell} ${dobCell} ${acceptTermsCell}</tr>`;
         return row;
         }).join("\n");
-
     const table = `<table class="table-auto w-full"><tr>
         <th class="px-4 py-2">Name</th>
         <th class="px-4 py-2">Email</th>
@@ -34,9 +29,7 @@ const displayEntries = () => {
     </tr>${tableEntries} </table>`;
     
 let details = document.getElementById("user-entries");
-details.innerHTML = table;
-}
-
+details.innerHTML = table; }
 const saveUserForm = (event) => {
     event.preventDefault();
     const name = document.getElementById("name").value;
@@ -55,7 +48,6 @@ const saveUserForm = (event) => {
     localStorage.setItem("user-entries", JSON.stringify(userEntries));
     displayEntries();
   }
-  
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("user-form");
   const dobInput = document.getElementById("dob");
@@ -72,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       return age;
     }
-
     function handleSubmit(event) {
       event.preventDefault();
       const dateOfBirth = dobInput.value;
@@ -87,5 +78,3 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", handleSubmit);  
 displayEntries();
 });
-
-
